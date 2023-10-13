@@ -2,8 +2,8 @@
   <div  class="container">
     <div class="size-container">
       <ul class="sizes">
-        <li v-for="index in 4" :key="index">
-          <sizecard class="product" :id="index"/>      
+        <li v-for="size in sizes" :key="size">
+          <sizecard :size="size" class="product" :id="size"/>      
         </li>
       </ul>
     </div>
@@ -22,9 +22,8 @@ export default {
     sizecard
   },
   props: {
-    active: {
-      type: Boolean,
-      default: false 
+    sizes: {
+      type: Array
     },
   },
   data() {

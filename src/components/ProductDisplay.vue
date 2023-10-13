@@ -1,34 +1,45 @@
 <template>
-  <div class="container" @mouseover = "enter" @mouseleave="leave">
-    <div class="container-tag">
-      <font-awesome-icon class="icon" icon="fa-solid fa-fire" style="color: #e00606;" />
-      <span class="status"><p>↓ 60%</p></span>
-    </div>
-    <div class="imagen-container">
-      <img :src="url">
-    </div>
-    <div class="hoover-container"> 
-      <div class="hoover">
-        <addCart  v-show="active" :class="{showAnimated:active}" class="cart-component"  :active="active"/>
+  <div class="container" >
+    <div class="product-container" @mouseover = "enter" @mouseleave="leave">
+      <div class="tag-container">
+        <font-awesome-icon class="icon" icon="fa-solid fa-fire" style="color: #e00606;" />
+        <span class="status" v-show="product.discount.haveDiscount"><p>↓ {{product.discount.discount}}%</p></span>
       </div>
+      <div class="imagen-container">
+        <img :src="product.imageUrl">
+      </div>
+      <div class="hoover-container"> 
+        <div class="hoover">
+          <addCart  v-show="active" :class="{showAnimated:active}" class="cart-component"  :sizes="product.sizes"/>
+        </div>
+      </div>
+      </div>
+    <div class="detail-container">
+      <detailProduct :name="product.name" :price="product.price"/>
     </div>
   </div>
 </template>
 
 <script>
 import jacket_arise from '../assets/aries-x-fila-flag-logo.jpg';
-import addCart from '../components/producto/ProductCardHoover.vue';
-
+import addCart from './producto/ProductCardHoover.vue';
+import detailProduct from './producto/DetailProduct.vue'
 export default {
-  name: 'ProductImagen',
+  name: 'ProductDisplay',
   components: {
     addCart,
+    detailProduct,
     },
   data() {
     return {
       url: jacket_arise,
       active: false,
     }
+  },
+  props: {
+    product: {
+      type: Object,
+    },
   },
   methods: {
     enter: function() {
@@ -46,7 +57,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.container-tag{
+.tag-container{
   position: relative;
   top: 25px;
   display: flex;

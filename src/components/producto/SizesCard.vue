@@ -1,6 +1,6 @@
 <template>
   <div  class="container">
-      <div> XS </div>
+      <div> {{size }} </div>
   </div>
 </template>
 
@@ -8,14 +8,9 @@
 export default {
   name: 'SizesCard',
   props: {
-    active: {
-      type: Boolean,
-      default: false 
+    size: {
+      type: String,
     },
-  },
-  data() {
-    return {
-    }
   },
 }
 </script>
