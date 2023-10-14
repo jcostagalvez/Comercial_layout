@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import sizecard from '../producto/SizesCard.vue'
+import sizecard from './SizesCard.vue'
 export default {
   name: 'cardHoover',
   components:{

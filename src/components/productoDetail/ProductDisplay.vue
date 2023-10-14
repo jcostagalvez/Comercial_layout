@@ -1,53 +1,32 @@
 <template>
   <div class="container" >
-    <div class="product-container" @mouseover = "enter" @mouseleave="leave">
-      <div class="tag-container">
-        <font-awesome-icon class="icon" icon="fa-solid fa-fire" style="color: #e00606;" />
-        <span class="status" v-show="product.discount.haveDiscount"><p>↓ {{product.discount.discount}}%</p></span>
+    <div class ="imagen-container">
+    <img :src="product.imageUrl">
+    </div>
+    <div class="utility-container">
+      <div class ="detail-container">
+        <detailProduct :name="product.name" :price="product.price"/>
       </div>
-      <div class="imagen-container">
-        <img :src="product.imageUrl">
+      <div class="cart-container">
+        <addCart class="cart-component"  :sizes="product.sizes"/>
       </div>
-      <div class="hoover-container"> 
-        <div class="hoover">
-          <addCart  v-show="active" :class="{showAnimated:active}" class="cart-component"  :sizes="product.sizes"/>
-        </div>
-      </div>
-      </div>
-    <div class="detail-container">
-      <detailProduct :name="product.name" :price="product.price"/>
     </div>
   </div>
 </template>
 
 <script>
-import jacket_arise from '../assets/aries-x-fila-flag-logo.jpg';
-import addCart from './producto/ProductCardHoover.vue';
-import detailProduct from './producto/DetailProduct.vue'
+import addCart from '../producto/ProductCardHoover.vue';
+import detailProduct from '../producto/DetailProduct.vue'
 export default {
   name: 'ProductDisplay',
   components: {
     addCart,
     detailProduct,
     },
-  data() {
-    return {
-      url: jacket_arise,
-      active: false,
-    }
-  },
   props: {
     product: {
       type: Object,
     },
-  },
-  methods: {
-    enter: function() {
-      this.active = true;
-    },
-    leave: function(){
-      this.active = false;
-    }
   },
 }
 </script>
@@ -81,9 +60,9 @@ export default {
   transform: scale(1.2); 
 }
 .imagen-container img{
-  border-radius: 5px;
   width: 100%;
   height: 100%;
+  border-radius: 5px;
   box-shadow: 0px 0px 117px -24px rgba(209,164,27,0.61);
   z-index: 2;
 }

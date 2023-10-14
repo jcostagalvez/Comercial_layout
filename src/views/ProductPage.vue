@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import ProductDisplay from '../components/ProductDisplay.vue';
+  import ProductDisplay from '../components/producto/ProductDisplay.vue';
   import{products} from '../fake-data.js'
   export default {
     name: 'ProductsPage',
