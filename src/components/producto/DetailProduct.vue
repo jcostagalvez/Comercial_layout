@@ -1,8 +1,8 @@
 <template>
   <div  class="container">
       <div class="detail_container">
-        <span class="name"> {{name}} </span>
-        <span class="price">{{price}} $</span>
+        <div class="name"> {{name}} </div>
+        <div class="price">{{price}} $</div>
       </div>
   </div>
 </template>
@@ -25,15 +25,15 @@ export default {
 <style scoped>
 .container{
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
+  height: 100%
 }
 .detail_container{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 3%;
+  width: inherit;
+  height: inherit;
+  flex-direction: row;
   padding: 2%;
+  display: flex;
+  justify-content: space-between;
   color: black;
 }
 .price{
@@ -41,5 +41,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+}
+.name{
+  
 }
 </style>

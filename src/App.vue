@@ -8,6 +8,8 @@
 <style>
 * { margin: 0 !important; }
 html{
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: #e3e4e5;
@@ -15,8 +17,8 @@ html{
 #app {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100%;
+  width: inherit;
+  height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

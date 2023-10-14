@@ -5,11 +5,11 @@
     </div>
     <div class="utility-container">
       <div class ="detail-container">
-        <detailProduct :name="product.name" :price="product.price"/>
+        <detailProduct class="detail-component" :name="product.name" :price="product.price"/>
       </div>
-      <div class="cart-container">
-        <addCart class="cart-component"  :sizes="product.sizes"/>
-      </div>
+    </div>
+    <div class="cart-container">
+      <addCart class="cart-component"  :sizes="product.sizes"/>
     </div>
   </div>
 </template>
@@ -35,69 +35,38 @@ export default {
 .container{
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  grid-column-gap: 10%;
+  justify-items: stretch;
 }
-.tag-container{
-  position: relative;
-  top: 25px;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-.status {
-  width: 25%;
-  text-align: center;
-  background-color: black;
-  padding: 0.5%;
-  border-radius: 40px;
-  color:white;
-  cursor: context-menu;
-}
-.icon{
-  cursor: pointer; 
-}
-.icon:hover{
-  transform: scale(1.2); 
+.imagen-container{
+  grid-column: 1/2;
+  grid-row: 1/4;
+  align-self: center;
 }
 .imagen-container img{
   width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  box-shadow: 0px 0px 117px -24px rgba(209,164,27,0.61);
-  z-index: 2;
 }
-.hoover-container{
-  display: flex;
-  justify-content: center;
+.utility-container{
+  padding-top: 5%;
+  grid-column: 2/4;
+  grid-row: 1/2;
+  align-self: start;
 }
-.hoover{
-  width: 23%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
+.detail-container{
+  width: 100%;
+}
+.detail-component{
+  display: flow;
+}
+.cart-container{
+  grid-column: 2/4;
+  grid-row: 2/4;
+  align-self: end;
 }
 .cart-component{
-  position: absolute;
-  transform: translateY(-97px);
-  width: inherit;
-  height: auto;
-}
-.showAnimated{
-  animation: slidein 0.5s ease-in;
-}
-
-@keyframes slidein{
-  0%{
-    transform: translateY(0px);
-    opacity: 0;
-  }
-  80% {
-    opacity: 0;
-  }
-
-  100%{
-    transform: translateY(-97px);
-    opacity: 1;
-  }
+  display: flow;
 }
 </style>
