@@ -39,10 +39,13 @@ export default {
 .price{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: flex-end;
 }
 .name{
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-end;
 }
 </style>
