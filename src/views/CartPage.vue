@@ -1,7 +1,7 @@
 <template>
   <div class="productCart">
-    <div>
-      <cartPage :products="products"/>
+    <div class="cart-container">
+      <cartPage @delete-id="deleteProduct" :products="products"/>
     </div>
   </div>
 </template>
@@ -19,9 +19,25 @@
     components: {
       cartPage,
     },
+    methods: {
+      deleteProduct(id) {
+        const index = products.findIndex(product => product.id === id);
+        products.splice(index,1)
+      }
+    },
   };
 </script>
 
-<Style>
-
-</Style>
+<style scoped>
+.productCart{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.cart-container{
+  padding-top: 10%;
+  width: 80%;
+  height: 50%;
+}
+</style>

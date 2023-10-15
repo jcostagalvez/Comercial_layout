@@ -6,8 +6,8 @@
     <div class="container-details">
       <ProductDetail class="ProductDetail" :name="product.name" :price="product.price"/>
     </div>
-    <div class="container-button">
-      <CartButton class="delete-button" @click="$emit('deleteProduct', product.id)"> 
+    <div class="container-button" @click="deleteObject">
+      <CartButton class="delete-button" > 
         Eliminar del carro
       </CartButton>
     </div>
@@ -28,6 +28,11 @@ export default {
     CartButton,
     ProductDetail
   },
+  methods: {
+    deleteObject() {
+      this.$emit('delete-id', this.product.id);
+    }
+  },
 }
 </script>
 
@@ -37,14 +42,16 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 10% 60% 30%;
-  grid-template-rows: 100%;
   grid-gap: 5%;
 }
 .container-img img{
   width:100%
 }
 .container-details{
-  
+  align-self: center;
+}
+.container-button{
+  align-self: center;
 }
 .ProductDetail{
   display: flow;
