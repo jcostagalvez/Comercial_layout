@@ -1,4 +1,4 @@
-# comercial_layout
+# vuexproyect
 
 ## Project setup
 ```

@@ -4,13 +4,16 @@
       <div class="cartLine-container" v-for="product in products" :key="product.id">
         <CartLine class="cartLine" @delete-id="deleteProduct" :product="product"/>
       </div>
-      
+      <div class="totalPrices">
+        <Prices :products="products" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import CartLine from './CartLine.vue'
+import Prices from '../cart/TotalPrice.vue'
 export default {
   name: 'CartDisplay',
   props: {
@@ -20,6 +23,7 @@ export default {
   },
   components: {
     CartLine,
+    Prices
   },
   methods: {
     deleteProduct(id) {
@@ -42,5 +46,8 @@ export default {
   border-bottom: 1px solid #D4AF37;
   padding-bottom: 2%;
   padding-top: 3%;
+}
+.totalPrices{
+  width: 100%;
 }
 </style>

@@ -3,11 +3,17 @@
     <div class="cart-container">
       <cartPage @delete-id="deleteProduct" :products="products"/>
     </div>
+    <div class="button-container">
+      <checkoutButton> 
+        CHECKOUT
+      </checkoutButton>
+    </div>
   </div>
 </template>
 
 <script>
   import cartPage from '../components/cart/CartDisplay.vue'
+  import checkoutButton from '../components/cart/cartButton.vue'
   import {products} from '../fake-data.js'
   export default {
     name: 'CartPage',
@@ -18,6 +24,7 @@
     },
     components: {
       cartPage,
+      checkoutButton
     },
     methods: {
       deleteProduct(id) {
@@ -33,11 +40,19 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .cart-container{
-  padding-top: 10%;
+  padding-top: 5%;
+  padding-bottom: 2%;
   width: 80%;
-  height: 50%;
+}
+.button-container{
+  display: flow;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 40%;
+  height: 5%;
 }
 </style>
