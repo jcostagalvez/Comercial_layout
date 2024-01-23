@@ -1,7 +1,7 @@
 <template>
   <div class="container" >
-    <div class ="imagen-container">
-    <img :src="product.imageUrl">
+    <div class ="imagen-container" >
+    <img :src="imageSource">
     </div>
     <div class="utility-container">
       <div class ="detail-container">
@@ -19,6 +19,7 @@ import addCart from '../producto/ProductCardHoover.vue';
 import detailProduct from '../producto/DetailProduct.vue'
 export default {
   name: 'ProductDisplay',
+
   components: {
     addCart,
     detailProduct,
@@ -28,6 +29,12 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    imageSource() {
+      // Crear una URL de datos (data URL) a partir de la cadena base64
+      return `data:image/png;base64,${this.product.img}`;
+    }
+  }
 }
 </script>
 

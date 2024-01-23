@@ -8,15 +8,15 @@
 
 <script>
   import productDetailPage from '../components/productoDetail/ProductDisplay.vue'
-  import {products} from '../fake-data.js'
+
   export default {
-    name: 'ProductsDetailPage',
+    name: 'ProductDisplay',
     components:{
     productDetailPage
     },
     data() {
       return {
-        product: products.find((p) => p.id === this.$route.params.id)
+        product: this.$store.getters.getProductById(this.$route.params.id)
       }
     },
   };

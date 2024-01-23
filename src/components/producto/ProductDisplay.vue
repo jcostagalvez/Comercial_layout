@@ -3,10 +3,10 @@
     <div class="product-container" @mouseover = "enter" @mouseleave="leave">
       <div class="tag-container">
         <font-awesome-icon class="icon" icon="fa-solid fa-fire" style="color: #e00606;" />
-        <span class="status" v-show="product.discount.haveDiscount"><p>↓ {{product.discount.discount}}%</p></span>
+        <!-- <span class="status" v-show="product.discount.haveDiscount"><p>↓ {{product.discount.discount}}%</p></span> -->
       </div>
       <div class="imagen-container">
-        <img :src="product.imageUrl">
+        <img :src="imageSource">
       </div>
       <div class="hoover-container"> 
         <div class="hoover">
@@ -46,6 +46,14 @@ export default {
     leave: function(){
       this.active = false;
     }
+  },
+  computed: {
+    imageSource() {
+      // Crear una URL de datos (data URL) a partir de la cadena base64
+      console.log('product img');
+      console.log(this.product.img);
+      return `data:image/png;base64,${this.product.img}`;
+    },
   },
 }
 </script>

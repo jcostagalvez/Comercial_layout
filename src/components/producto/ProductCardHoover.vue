@@ -9,7 +9,7 @@
     </div>
     <div class="cart-container"> 
       <span> Agregar a la bolsa </span>
-      <font-awesome-icon icon="fa-solid fa-truck" style="color: #ffffff;" />
+      <!-- <font-awesome-icon icon="fa-solid fa-truck" style="color: #ffffff;" /> -->
     </div>
   </div>
 </template>
