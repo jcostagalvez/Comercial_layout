@@ -1,9 +1,12 @@
 <template>
-  <div class="container">
-    <div class="detailPage-container">
-      <productDetailPage   class="detailPage-component" :product="product"/>
-    </div>
-  </div>
+  <transition name="fade"> 
+      <div class="container">
+        <div class="detailPage-container">
+          <productDetailPage   class="detailPage-component" :product="product"/>
+        </div>
+      </div>
+    <router-view></router-view>
+  </transition>
 </template>
 
 <script>
@@ -37,5 +40,14 @@
 .detailPage-component {
   width: 60%;
   height: fit-content;
+}
+
+.fade-enter-active {
+  transition: opacity 1s;
+  transform: scale(1.1);
+}
+.fade-enter{
+  transform: scale(1);
+  opacity: 0;
 }
 </style>

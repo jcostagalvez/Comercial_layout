@@ -1,6 +1,6 @@
 <template>
   <div class="container" >
-    <div class ="imagen-container" >
+    <div class ="imagen-container">
     <img :src="imageSource">
     </div>
     <div class="utility-container">

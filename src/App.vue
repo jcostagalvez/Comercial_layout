@@ -1,8 +1,9 @@
 <template>
-  <div id="app" margin:0>
-    <h1>FUEGO EN EL 23</h1>
-    <router-view/>
-  </div>
+  <router-view v-slot="{ Component }">
+    <transition>
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <style>
@@ -43,4 +44,36 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
+.fade-enter-from,
+.fade-leave-to{
+  opacity:0
+}
+
+.fade-enter-active,
+.fade-leave-active{
+  transition: opacity 0.3 ease-out;
+  /* animation-name: afterDeath;
+  animation-duration: 2s;
+  */
+}
+
+@keyframes afterDeath{
+  0% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  25% {
+
+  }
+  50% {
+
+  }
+  75% {
+
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
 </style>

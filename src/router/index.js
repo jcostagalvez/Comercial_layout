@@ -10,12 +10,15 @@ const routes = [
   {
     path: '/products',
     name: 'Products',
-    component: ProductPage
+    component: ProductPage,
   },
   {
     path: '/product/:id',
     name: 'ProductsDetail',
-    component: ProductDetailPage
+    component: ProductDetailPage,
+    meta:{
+      transition: 'slowBiggy'
+    }
   },
   {
     path: '/Cart',

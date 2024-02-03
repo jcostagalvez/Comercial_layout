@@ -92,6 +92,7 @@ export default {
   border-radius: 5px;
   box-shadow: 0px 0px 117px -24px rgba(209,164,27,0.61);
   z-index: 2;
+  cursor: pointer;
 }
 .hoover-container{
   display: flex;
@@ -105,7 +106,7 @@ export default {
 }
 .cart-component{
   position: absolute;
-  transform: translateY(-97px);
+  transform: translateY(-108px);
   width: inherit;
   height: auto;
 }
