@@ -9,20 +9,20 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/products',
-    name: 'Products',
+    name: 'products',
     component: ProductPage,
   },
   {
     path: '/product/:id',
-    name: 'ProductsDetail',
+    name: 'productsDetail',
     component: ProductDetailPage,
     meta:{
       transition: 'slowBiggy'
     }
   },
   {
-    path: '/Cart',
-    name: 'cartPage',
+    path: '/cart',
+    name: 'cart',
     component: CartPage
   },
   {

@@ -6,7 +6,7 @@
         <!-- <span class="status" v-show="product.discount.haveDiscount"><p>↓ {{product.discount.discount}}%</p></span> -->
       </div>
       <div class="imagen-container">
-        <img :src="imageSource">
+        <img :src="imageSource" @click="goToProduct(product.id)" :id="product.id">
       </div>
       <div class="hoover-container"> 
         <div class="hoover">
@@ -45,14 +45,18 @@ export default {
     },
     leave: function(){
       this.active = false;
+    },
+    goToProduct(Id){
+    this.$router.push({path: `/product/${Id}`})
     }
   },
   computed: {
     imageSource() {
-      // Crear una URL de datos (data URL) a partir de la cadena base64
-      console.log('product img');
-      console.log(this.product.img);
-      return `data:image/png;base64,${this.product.img}`;
+      if(this.product.img.startsWith("data:image/png;base64")){
+        return this.product.img
+      }else{
+        return `data:image/png;base64,${this.product.img}`
+      }
     },
   },
 }

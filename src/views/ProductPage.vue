@@ -5,7 +5,7 @@
       <h2>{{$store.state.frase}}</h2>
       <ul class="product-container">
         <li v-for="product in $store.state.products" :key="product.id">
-          <ProductDisplay :product="product" class="product" @click.native="goToProduct(product.id)" :id="product.id"/>      
+          <ProductDisplay :product="product" class="product"/>      
         </li>
       </ul>
     </div>
@@ -33,12 +33,7 @@
     components: {
       ProductDisplay,
       navStore
-    },
-    methods: {
-    goToProduct(Id){
-    this.$router.push({path: `/product/${Id}`})
     }
-  }
   };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="buttonLink"> {{link.name}} </button>
+        <button @click="goToRoute(link.path)" class="buttonLink"> {{link.name}} </button>
     </div>
 </template>
 
@@ -11,9 +11,30 @@
                 type: Object
             },
         },
+
+        methods: {
+            goToRoute(path) {
+                if(!path.includes(this.$route.name)){
+                    this.$router.push({path: path})
+                }
+            }
+        },
     }
 </script>
 
 <style lang="scss" scoped>
-
+.buttonLink{
+    padding-bottom: 2%;
+    all:unset;
+    cursor: pointer;
+}
+.buttonLink:hover{
+    transform: scale(1.2);
+    border-bottom: 2px solid rgba(212, 175, 55, 0.75);
+    border-bottom-left-radius: 7%;
+    border-bottom-right-radius: 7%;
+}
+.buttonLink:focus{
+    border-bottom: 2px solid rgba(212, 175, 55, 1);
+}
 </style>

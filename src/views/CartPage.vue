@@ -1,12 +1,15 @@
 <template>
-  <div class="productCart">
-    <div class="cart-container">
-      <cartPage @delete-id="deleteProduct" :products="products"/>
-    </div>
-    <div class="button-container">
-      <checkoutButton> 
-        CHECKOUT
-      </checkoutButton>
+  <div>
+    <navStore class="nav"></navStore>
+    <div class="productCart">
+      <div class="cart-container">
+        <cartPage @delete-id="deleteProduct" :products="products"/>
+      </div>
+      <div class="button-container">
+        <checkoutButton> 
+          CHECKOUT
+        </checkoutButton>
+      </div>
     </div>
   </div>
 </template>
@@ -14,6 +17,7 @@
 <script>
   import cartPage from '../components/cart/CartDisplay.vue'
   import checkoutButton from '../components/cart/cartButton.vue'
+  import navStore from './navBar.vue';
   import {products} from '../fake-data.js'
   export default {
     name: 'CartPage',
@@ -24,6 +28,7 @@
     },
     components: {
       cartPage,
+      navStore,
       checkoutButton
     },
     methods: {

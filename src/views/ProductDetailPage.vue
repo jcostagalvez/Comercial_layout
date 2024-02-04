@@ -1,21 +1,21 @@
 <template>
-  <transition name="fade"> 
-      <div class="container">
-        <div class="detailPage-container">
-          <productDetailPage   class="detailPage-component" :product="product"/>
-        </div>
-      </div>
-    <router-view></router-view>
-  </transition>
+  <div class="container">
+    <navStore class="nav"></navStore>
+    <div class="detailPage-container">
+      <productDetailPage   class="detailPage-component" :product="product"/>
+    </div>
+  </div>
 </template>
 
 <script>
   import productDetailPage from '../components/productoDetail/ProductDisplay.vue'
+  import navStore from './navBar.vue';
 
   export default {
     name: 'ProductDisplay',
     components:{
-    productDetailPage
+    productDetailPage,
+    navStore
     },
     data() {
       return {

@@ -1,11 +1,11 @@
 <template>
     <div class="container">
-        <ul id="example-1">
-            <li v-for="item in navItems" :key="item" class="listOptions">
+        <ul class="options-container">
+            <li v-for="item in navItems" :key="item" class="options">
                 <navButtom :link="item"></navButtom>
             </li>
         </ul>
-        <headerStore></headerStore>
+        <headerStore class="head"></headerStore>
     </div>
 </template>
 
@@ -19,9 +19,9 @@ import navButtom from './navButton.vue';
         },
         data() {
             return {
-                navItems: [{name:'Productos' ,path:'/'}, 
-                           {name:'Carrito' ,path:'/Cart'}, 
-                           {name:'Lista de deseos' ,path:'/Cart'}]
+                navItems: [{name:'Productos' ,path:'/products'}, 
+                           {name:'Carrito' ,path:'/cart'}, 
+                           {name:'Lista de deseos' ,path:'/cart'}]
             }
         },
     }
@@ -29,10 +29,21 @@ import navButtom from './navButton.vue';
 
 <style lang="scss" scoped>
 .container{
+    display: flex;
+    border-image: linear-gradient(to bottom , #e8eaed, #e8eaed) 1;
     height:100%;
     width:100%;
 }
-.listOptions{
+.options{
     list-style-type: none;
+    padding-right: 3%;
+}
+.options-container{
+    width: 50%;
+    display: flex;
+}
+.head{
+    width: 50%;
+    text-align: center;
 }
 </style>

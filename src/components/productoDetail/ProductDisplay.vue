@@ -32,7 +32,11 @@ export default {
   computed: {
     imageSource() {
       // Crear una URL de datos (data URL) a partir de la cadena base64
-      return `data:image/png;base64,${this.product.img}`;
+      if(this.product.img.startsWith("data:image/png;base64")){
+        return this.product.img
+      }else{
+        return `data:image/png;base64,${this.product.img}`
+      }
     }
   }
 }

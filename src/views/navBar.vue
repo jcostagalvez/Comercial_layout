@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <navbar class="container"></navbar>
     </div>
 </template>
@@ -17,7 +17,7 @@ import navbar from '../components/Headline/navStore.vue';
 .container{
     height: 100%;
     width: 100%;
-    padding-top: 1%;
-    padding-bottom: 5%;
+    padding-top: 2%;
+    padding-bottom: 4%;
 }
 </style>
