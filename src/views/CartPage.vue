@@ -18,12 +18,11 @@
   import cartPage from '../components/cart/CartDisplay.vue'
   import checkoutButton from '../components/cart/cartButton.vue'
   import navStore from './navBar.vue';
-  import {products} from '../fake-data.js'
   export default {
     name: 'CartPage',
     data() {
       return {
-        products: products
+        products:[]
       }
     },
     components: {
@@ -31,12 +30,32 @@
       navStore,
       checkoutButton
     },
+    beforeCreate(){
+      if(this.$store.state.products.length > 0) {
+        this.$store.dispatch('getUserCart')
+        .then(() => {
+          this.products = this.$store.getters.getProductsIncart;
+        })
+        .catch(error => console.log('error: ' + error))
+      }else {
+        this.$store.dispatch('getProducts')
+        .then(() => {
+          this.$store.dispatch('getUserCart')
+          .then(() => { 
+            this.products = this.$store.getters.getProductsIncart;
+          })
+          .catch(error => console.log('error: ' + error))
+        })
+        .catch(error => console.log('error: ' + error))
+      }
+
+    },
     methods: {
       deleteProduct(id) {
-        const index = products.findIndex(product => product.id === id);
-        products.splice(index,1)
+        this.$store.dispatch('deleteCartProduct', id);
+        this.products = this.products.filter(producto => producto._id != id);
       }
-    },
+    }
   };
 </script>
 

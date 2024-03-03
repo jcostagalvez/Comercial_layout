@@ -21,7 +21,7 @@ import navButtom from './navButton.vue';
             return {
                 navItems: [{name:'Productos' ,path:'/products'}, 
                            {name:'Carrito' ,path:'/cart'}, 
-                           {name:'Lista de deseos' ,path:'/cart'}]
+                           /*{name:'Lista de deseos' ,path:'/cart'}*/]
             }
         },
     }

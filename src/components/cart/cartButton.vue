@@ -1,6 +1,6 @@
 <template>
   <div class="container" >
-    <slot></slot>
+    <slot class="texto"></slot>
   </div>
 </template>
 
@@ -24,5 +24,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+.container:hover{
+  transform: scale(1.1);
+}
+
+.container:focus{
+  background-color: rgb(158, 136, 14);
 }
 </style>

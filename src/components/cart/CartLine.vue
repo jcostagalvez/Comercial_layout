@@ -1,10 +1,12 @@
 <template>
   <div class="container" >
     <div class="container-img">
-      <img :src="product.imageUrl" :alt="product.name">
+      <img :src="imageSource" :alt="product.name">
     </div>
     <div class="container-details">
       <ProductDetail class="ProductDetail" :name="product.name" :price="product.price"/>
+      <span class="ProductDetail"> Cantidad : 1</span>
+      <span class="ProductDetail"> Talla: L</span>
     </div>
     <div class="container-button" @click="deleteObject">
       <CartButton class="delete-button" > 
@@ -30,8 +32,17 @@ export default {
   },
   methods: {
     deleteObject() {
-      this.$emit('delete-id', this.product.id);
+      this.$emit('delete-id', this.product._id);
     }
+  },
+  computed: {
+    imageSource() {
+      if(this.product.img.startsWith("data:image/png;base64")){
+        return this.product.img
+      }else{
+        return `data:image/png;base64,${this.product.img}`
+      }
+    },
   },
 }
 </script>
@@ -43,6 +54,9 @@ export default {
   display: grid;
   grid-template-columns: 10% 60% 30%;
   grid-gap: 5%;
+}
+span[class$="ProductDetail"]{
+  padding: 2%;
 }
 .container-img img{
   width:100%

@@ -10,7 +10,7 @@
       </div>
       <div class="hoover-container"> 
         <div class="hoover">
-          <addCart  v-show="active" :class="{showAnimated:active}" class="cart-component"  :sizes="product.sizes"/>
+          <addCart  @isAdded="addToCart" v-show="active" :class="{showAnimated:active}" class="cart-component"  :sizes="product.sizes"/>
         </div>
       </div>
       </div>
@@ -48,7 +48,10 @@ export default {
     },
     goToProduct(Id){
     this.$router.push({path: `/product/${Id}`})
-    }
+    },
+    addToCart(){
+      this.$store.dispatch('addCartProduct', this.product._id);
+    },
   },
   computed: {
     imageSource() {
@@ -104,7 +107,6 @@ export default {
 }
 .hoover{
   width: 23%;
-  cursor: pointer;
   display: flex;
   justify-content: center;
 }
