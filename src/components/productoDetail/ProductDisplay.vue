@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     addToCart(event){
-      console.log(`Este es el evento ${event.sizeSelected}`);
       this.$store.dispatch('addCartProduct', {productId: this.product._id, size: event.sizeSelected});
     }
   }

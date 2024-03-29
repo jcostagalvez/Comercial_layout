@@ -4,7 +4,7 @@
     <transition name="final-screen">
       <squareWindow class="finalScreen" v-show="modalOpen" @closeModal="closeModal"></squareWindow>
     </transition>
-    <div class="productCart">
+    <div v-show="products.length > 0" class="productCart">
       <div class="cart-container">
         <cartPage @delete-id="deleteProduct" :products="products"/>
       </div>
@@ -66,6 +66,7 @@
       },
       openModal(){
         this.$store.dispatch('emptyCart');
+        this.products = [];
         this.modalOpen = true;
       }
     }

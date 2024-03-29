@@ -23,6 +23,6 @@ export default {
 
     },
     delete_cart(){
-        return fetch('https://store-api-nwh6.onrender.com//cart/allProducts/1',{ mode:'cors', method:'DELETE', headers: {'Content-Type': 'application/json'}});
+        return fetch('https://store-api-nwh6.onrender.com/cart/allProducts/1',{ mode:'cors', method:'DELETE', headers: {'Content-Type': 'application/json'}});
     },
 }
