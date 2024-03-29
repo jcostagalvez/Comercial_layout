@@ -6,7 +6,7 @@
     <div class="container-details">
       <ProductDetail class="ProductDetail" :name="product.name" :price="product.price"/>
       <span class="ProductDetail"> Cantidad : 1</span>
-      <span class="ProductDetail"> Talla: L</span>
+      <span class="ProductDetail"> Talla: {{ size }}</span>
     </div>
     <div class="container-button" @click="deleteObject">
       <CartButton class="delete-button" > 
@@ -25,6 +25,12 @@ export default {
     product: {
       type: Object,
     },
+    cartId: {
+      type: String,
+    },
+    size: {
+      type: Object,
+    }
   },
   components: {
     CartButton,
@@ -32,7 +38,7 @@ export default {
   },
   methods: {
     deleteObject() {
-      this.$emit('delete-id', this.product._id);
+      this.$emit('delete-id', this.cartId);
     }
   },
   computed: {

@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     totalPrice() {
-      return this.products.reduce((total, curVal) => { return total + parseFloat(curVal.price);}, 0)
+      return this.products.reduce((total, curVal) => { return total + parseFloat(curVal.producto.price);}, 0)
     }
   },
 }

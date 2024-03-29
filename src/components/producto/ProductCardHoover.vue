@@ -30,11 +30,15 @@ export default {
   },
   methods: {
     isClicked() {
-      this.$emit('isAdded', true);
+      if(this.choicedSize != undefined){
+        console.log('evento emitido');
+        this.$emit('isAdded', {selected:true, sizeSelected: this.choicedSize});
+      }else{
+        alert('Debes seleccionar una talla');
+      }
     },
     sizeSelected(event){
       this.choicedSize = event;
-      console.log(' this.choicedSize : ' +  this.choicedSize);
     }
   },
   

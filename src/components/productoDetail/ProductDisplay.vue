@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="cart-container">
-      <addCart class="cart-component"  :sizes="product.sizes"/>
+      <addCart @isAdded="addToCart" class="cart-component" :sizes="product.sizes"/>
     </div>
   </div>
 </template>
@@ -37,6 +37,12 @@ export default {
       }else{
         return `data:image/png;base64,${this.product.img}`
       }
+    }
+  },
+  methods: {
+    addToCart(event){
+      console.log(`Este es el evento ${event.sizeSelected}`);
+      this.$store.dispatch('addCartProduct', {productId: this.product._id, size: event.sizeSelected});
     }
   }
 }

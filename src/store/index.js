@@ -18,9 +18,15 @@ export default new Vuex.Store({
     },
     getProductsIncart : (state) => {
       const cartProducts = [];
-      state.cartList.forEach( productCart => {
-       let producto = state.products.find(producto => producto._id == productCart.productId);
-       if (producto != undefined ) cartProducts.push(producto);
+      state.cartList.forEach(productCart => {
+        let cartProduct = {};
+        const producto = state.products.find(producto => producto._id == productCart.productId);
+       if (producto != undefined ){
+        cartProduct.producto = producto;
+        cartProduct.cartId = productCart._id;
+        cartProduct.sizeSelected = productCart.size;
+        cartProducts.push(cartProduct);      
+      } 
       })
       return cartProducts
 
@@ -33,12 +39,17 @@ export default new Vuex.Store({
     set_cart(state, cart){
       state.cartList = cart;
     },
-    delete_cartProduct (state, productId){
-      const listNewCart = state.cartList.filter(producto => producto.productId != productId);
+    delete_cartProduct (state, id){
+      console.log(`state.cartList ${state.cartList}`);
+      const listNewCart = state.cartList.filter(producto => producto._id != id);
+      console.log(`listNewCart ${listNewCart}`);
       state.cartList = listNewCart;
     },
     set_cart_product(state, productId){
       state.cartList.push(productId);
+    },
+    delete_Cart(state){
+      state.cartList.pop();
     }
   },
   actions: {
@@ -63,28 +74,36 @@ export default new Vuex.Store({
         commit('set_cart', data.data)
       }))
     },
-    async deleteCartProduct({commit}, productId){
-      return apiProducts.delete_productCart(1, productId)
+    async deleteCartProduct({commit}, id){
+      return apiProducts.delete_productCart(1, id)
       .then(response => response.json()
       .then( data => {
+        console.log('_id to delete: ' + id);
         console.log('deleteCartProduct')
         console.log(data.data)
-        commit('delete_cartProduct', productId)
+        commit('delete_cartProduct', id)
       }))
       .catch(err => {
         console.log(err);
       }); 
     },
-    async addCartProduct({commit}, productId){
-      return apiProducts.add_cartProduct(1, productId)
+    async addCartProduct({commit}, cartProductInfo){
+      return apiProducts.add_cartProduct(1, cartProductInfo)
       .then(response => response.json()
       .then(data => {
-        console.log('Product Id ---> ' + productId);
-        console.log('addCartProduct');
         console.log(data.data);
-        commit('set_cart_product', productId)
+        commit('set_cart_product', cartProductInfo.productId)
       }))
       .catch(err => console.log(err))
+    },
+
+    async emptyCart({commit}){
+      return apiProducts.delete_cart()
+      .then(response => response.json()
+      .then(data => {
+        console.log(data.data);
+        commit('delete_Cart');
+      }))
     }
   },
   modules: {

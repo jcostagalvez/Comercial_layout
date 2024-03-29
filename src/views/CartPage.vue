@@ -1,12 +1,15 @@
 <template>
   <div>
     <navStore class="nav"></navStore>
+    <transition name="final-screen">
+      <squareWindow class="finalScreen" v-show="modalOpen" @closeModal="closeModal"></squareWindow>
+    </transition>
     <div class="productCart">
       <div class="cart-container">
         <cartPage @delete-id="deleteProduct" :products="products"/>
       </div>
-      <div class="button-container">
-        <checkoutButton> 
+      <div class="button-container" @click="openModal">
+        <checkoutButton > 
           CHECKOUT
         </checkoutButton>
       </div>
@@ -17,18 +20,21 @@
 <script>
   import cartPage from '../components/cart/CartDisplay.vue'
   import checkoutButton from '../components/cart/cartButton.vue'
+  import squareWindow from '../components/ModalsWindows/squareModal.vue'
   import navStore from './navBar.vue';
   export default {
     name: 'CartPage',
     data() {
       return {
-        products:[]
+        products:[],
+        modalOpen: false
       }
     },
     components: {
       cartPage,
       navStore,
-      checkoutButton
+      checkoutButton,
+      squareWindow
     },
     beforeCreate(){
       if(this.$store.state.products.length > 0) {
@@ -53,7 +59,14 @@
     methods: {
       deleteProduct(id) {
         this.$store.dispatch('deleteCartProduct', id);
-        this.products = this.products.filter(producto => producto._id != id);
+        this.products = this.products.filter(producto => producto.cartId != id);
+      },
+      closeModal(event){
+        this.modalOpen= !event
+      },
+      openModal(){
+        this.$store.dispatch('emptyCart');
+        this.modalOpen = true;
       }
     }
   };
@@ -79,4 +92,21 @@
   width: 40%;
   height: 5%;
 }
+.finalScreen{
+  position: fixed;
+  height: 35%;
+  z-index: 10;
+  top: 24%;
+  left: 5%;
+}
+
+.final-screen-enter-active,
+  .final-screen-leave-active {
+    transition: opacity 0.3s;
+  }
+
+  .final-screen-enter,
+  .final-screen-leave-to {
+    opacity: 0;
+  }
 </style>

@@ -21,7 +21,7 @@
       return {
         product: this.$store.getters.getProductById(this.$route.params.id)
       }
-    },
+    }
   };
 </script>
 

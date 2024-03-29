@@ -49,8 +49,9 @@ export default {
     goToProduct(Id){
     this.$router.push({path: `/product/${Id}`})
     },
-    addToCart(){
-      this.$store.dispatch('addCartProduct', this.product._id);
+    addToCart(event){
+      console.log(`Este es el evento ${event.sizeSelected}`);
+      this.$store.dispatch('addCartProduct', {productId: this.product._id, size: event.sizeSelected});
     },
   },
   computed: {

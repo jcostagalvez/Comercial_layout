@@ -1,8 +1,8 @@
 <template>
   <div class="container" >
     <div>
-      <div class="cartLine-container" v-for="product in products" :key="product.id">
-        <CartLine class="cartLine" @delete-id="deleteProduct" :product="product"/>
+      <div class="cartLine-container" v-for="product in products" :key="product.cartId">
+        <CartLine class="cartLine" @delete-id="deleteProduct" :size="product.sizeSelected" :cart-id="product.cartId" :product="product.producto"/>
       </div>
       <div class="totalPrices">
         <Prices :products="products" />
